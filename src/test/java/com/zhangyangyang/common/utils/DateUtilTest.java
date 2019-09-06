@@ -47,4 +47,6 @@ public class DateUtilTest {
 		String string = sql.replace("{1}",df.format(date1)).replace("{2}", df.format(date2));
 		System.out.println(string);
 	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.zhangyangyang.common.utils;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,6 +13,24 @@ import java.util.Date;
     *
  */
 public class DateUtil {
+	
+	
+	//返回一个在某个时间段的随机日期
+	public static String randomDate(Date minDate ,Date maxDate) {
+		//从1970年到minDate的毫米数
+		long l1 = minDate.getTime();
+		//从1970年到maxDate的毫米数
+		long l2 = maxDate.getTime();
+		
+		Calendar c = Calendar.getInstance();
+		
+		long l3 = (long)(Math.random() * (l2-l1+1)+l1);
+		c.setTimeInMillis(l3);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String format = df.format(c.getTime());
+		return format;
+	}
+	
 	/*
 	* 方法1：(5分)
 	* 给一个时间对象，返回该时间所在月的1日0时0分0秒。例如一个Date对象的值是2019-05-18 11:37:22
