@@ -57,7 +57,7 @@ public class StringUtil {
 		//如果为空则返回false
 		if (hasText(email)) {
 			//规则
-			String telRegex = "[A-z]+[A-z0-9_-]*\\\\@[A-z0-9]+\\\\.[A-z]+";
+			String telRegex = "[A-z]+[A-z0-9_-]*\\@[A-z0-9]+\\.[A-z]+";
 			return email.matches(telRegex);
 		}
 		return false;
