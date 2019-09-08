@@ -4,6 +4,65 @@ import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 public class StringUtil {
+	
+	/**
+	 * 
+	    * @Title: toHtml
+	    * @Description:  传来的字符转成 html 文本，遇到“\n”符时，要用<p></p>将这一段
+			字符包起来。 
+	    * @param @param src
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	public static String toHtml(String src) {
+		String str = src.replaceAll(System.getProperty("line.separator"),"|");
+		String[] split = str.split("\\|");
+		String newStr = "";
+		for (String string : split) {
+			newStr+="<p>"+string+"</p>";
+		}
+		return newStr;
+	}
+	
+	/**
+	 * 
+	    * @Title: isPhoneNumber
+	    * @Description: 正则验证是否是手机号
+	    * @param @param number
+	    * @param @return    参数
+	    * @return boolean    返回类型
+	    * @throws
+	 */
+	public static boolean isPhoneNumber(String number) {
+		//如果为空则返回false
+		if (hasText(number)) {
+			//规则
+			String telRegex = "[1][35789]\\d{9}";
+			return number.matches(telRegex);
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	    * @Title: isEmail
+	    * @Description: 校验是否为邮箱
+	    * @param @param email
+	    * @param @return    参数
+	    * @return boolean    返回类型
+	    * @throws
+	 */
+	public static boolean isEmail(String email) {
+		//如果为空则返回false
+		if (hasText(email)) {
+			//规则
+			String telRegex = "[A-z]+[A-z0-9_-]*\\\\@[A-z0-9]+\\\\.[A-z]+";
+			return email.matches(telRegex);
+		}
+		return false;
+	}
+	
 	//方法1：判断源字符串是否有值，空引号(空白字符串)也算没值 (5分)
 	public static boolean hasLength(String src){
 		return null!=src && src.length()>0;
