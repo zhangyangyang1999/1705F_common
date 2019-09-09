@@ -6,6 +6,21 @@ import java.util.Random;
 public class StringUtil {
 	
 	/**
+	* 方法功能：将字符串转换成html文本，如果遇到“\n”换行换符，则要将这一段文本使用<p></p>标签
+	* 包起来。如果遇到“\n\r”两个在一起按上面\n处理。如果只遇到一个“\r”则替换成<br/>标签。
+	* 使用场景：网页文本框传到后台的字符串就可能就会回车换行。*/
+	public static String toHtml(String text){
+		String str = text.replaceAll(System.getProperty("line.separator"),"|");
+		String[] split = str.split("\\|");
+		String newStr = "";
+		for (String string : split) {
+			newStr+="<p>"+string+"</p>";
+		}
+		return newStr;
+	}
+	
+	
+	/**
 	 * 
 	    * @Title: toHtml
 	    * @Description:  传来的字符转成 html 文本，遇到“\n”符时，要用<p></p>将这一段
@@ -15,15 +30,12 @@ public class StringUtil {
 	    * @return String    返回类型
 	    * @throws
 	 */
-	public static String toHtml(String src) {
-		String str = src.replaceAll(System.getProperty("line.separator"),"|");
-		String[] split = str.split("\\|");
-		String newStr = "";
-		for (String string : split) {
-			newStr+="<p>"+string+"</p>";
-		}
-		return newStr;
-	}
+	/*
+	 * public static String toHtml(String src) { String str =
+	 * src.replaceAll(System.getProperty("line.separator"),"|"); String[] split =
+	 * str.split("\\|"); String newStr = ""; for (String string : split) {
+	 * newStr+="<p>"+string+"</p>"; } return newStr; }
+	 */
 	
 	/**
 	 * 
